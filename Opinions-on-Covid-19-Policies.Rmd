@@ -1,0 +1,114 @@
+---
+title: "How Ontarians feel about the Implemented COVID-19 policies"
+author(s): "Yitian Zhao, Zikun (Alex) Xu"
+date: "10/3/2020"
+output: pdf_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+#install.packages("tidyverse")
+#install.packages("brms")
+library(tidyverse)
+library(brms)
+```
+
+
+# Executive summary
+
+As junior statisticians at Petit Poll, we were asked by Progressive Conservative Party of Ontario to survey Ontario to understand how citizens of Ontario feel about the implemented COVID-19 policies and to show how effective respondents think that the policies are at combating COVID-19. In this paper, we have the intention of guiding the Conservative Party geared towards improving policies that further improve how the government is handling this pandemic. From our study, we found that citizens could gain the most satisfaction from ...
+
+# Introduction
+
+
+# Survey methodology 
+
+- What is the population frame and sample
+- What sampling methods will you use and why e.g. you could choose SRSWOR stratified etc. What are some of the statistical properties that the method brings to the table e.g. for SRSWOR you could discuss Wu Thompson Theorem 2.2. etc as appropriate
+- How are you going to reach your desired respondents
+- How much do you estimate this will cost
+- What steps will you take to deal with non-response and how will non-response affect your survey
+- How are you going to protect respondent privacy
+
+and more...
+
+We have a population frame of 10000 and sampled 10 different survey questions. In terms of sampling methods, we will use SRSWOR stratified for variables such as gender to restrict the different groups by strata (e.g. stratify by sex) in order to reduce bias and variability in the results. We also use simple sampling for the variables such as age group, shutdown, isolation ability, and CERB reliability since these questions could be weighted in terms of how respondents of Ontario feel about these COVID-19 policies. 
+# Survey questions
+Survey questions 
+1. What is your gender?
+2. What age group are you in?
+3. Given the fact that recent COVID cases have been going up in Ontario, how would you feel about another shutdown similar to Phase 1?
+4. Do you have the ability to isolate at home amid the pandemic i.e. working/attending class at home
+5. How might another shutdown affect your financial stability?
+6. Do you feel like you relied heavily on CERB or any other financial aid during the first shutdown?
+7. Do you think a reduction from 10 people to 6 people max for social gatherings is effective?
+8. Do you think businesses should be closed proactively to deter further COVID cases or should be closed reactively to preserve the economy and jobs?
+9. Based on the increase of schools that have affected staff or students,  what do you feel like schools should do to minimize risk of COVID-19
+10. How confident do you feel about the current provincial administration in Ontario in handling the 2nd wave of COVID-19?
+
+# Data sampling from the Survey
+```{r sample-data, echo=FALSE}
+set.seed(314)
+#Survey size of 10000 people to sample from
+survey_size <- 10000
+
+survey_data <- tibble(
+  #Question 1. Sampling gender with a weight of 50-50
+  gender = sample(x = c("Male","Female","Other"), size = survey_size, replace=TRUE, prob = c(0.45, 0.45, 0.1)),
+  
+  #Question 2. Sampling age group of the respondents. We spike the probabilities since around 50% or respondents are 40 or younger.  
+  age_grp = sample(x = c("18-29","30-39","40-49","50-59","60+"), size = survey_size, replace =TRUE, prob=c(0.25,0.25,0.2,0.15,0.15)),
+  
+  #Question 3. Sampling on a scale of 1-10 how would the participant feel about another shutdown similar to phase 3
+  shut_down = sample(x = c(1:10), size = survey_size, replace=TRUE),
+  
+  #Question 4. 
+  isolate_ability = sample(x = c("yes","no"),size = survey_size, replace = TRUE, prob=c(0.9,0.1)),
+  
+  #Question 5. 
+  financial_stability = sample(x = c(1:10), size = survey_size, replace=TRUE, prob = c(0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1)),
+  
+  #Question 6. 
+  CERB_reliability = sample(x = c(1:10), size = survey_size, replace=TRUE, prob = c(0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1)),
+  
+  #Question 7. 
+  smaller_gathering_size = sample(x = c(1:10), size = survey_size, replace=TRUE, prob = c(0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1)),
+  
+  #Question 8. 
+  business_shutdowns = sample(x = c("Proactively ","Reactively "),size = survey_size, replace = TRUE, prob=c(0.9,0.1)),
+  
+  #Question 9. 
+  schools = sample(x = c("In person classes, but stricter policies","Switch to online classes","Remain the same as it is now", "Completely shutdown"),size = survey_size, replace = TRUE, prob=c(0.35,0.3,0.2,0.15)),
+  
+  #Question 10. 
+  confidence_level = sample(x = c(1:10), size = survey_size, replace=TRUE, prob = c(0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1))
+)
+
+```
+
+# Discussion 
+
+## Results
+
+## Weakness and areas for future
+
+
+# Appendix
+Code for this report could be found at:
+https://github.com/xuzi9/Opinions-on-Covid-19-Policies
+
+## Survey
+
+Add a link to the survey and screen shots of the questions.
+
+
+# References
+
+- Wickham et al., (2019). Welcome to the tidyverse. Journal of Open
+  Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686
+  
+-Bürkner P. C. (2017). brms: An R Package for Bayesian Multilevel Models using Stan. Journal of Statistical Software. 80(1), 1-28. doi.org/10.18637/jss.v080.i01
+
+- R Core Team (2020). R: A language and environment for statistical
+  computing. R Foundation for Statistical Computing, Vienna, Austria.
+  URL https://www.R-project.org/.
