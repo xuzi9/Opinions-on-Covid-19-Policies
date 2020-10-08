@@ -36,8 +36,11 @@ In terms of reaching an audience for a real world situation, we think the most f
 
 
 # Data Development
-  In order to simulate our survey with little bias and deviation, we weight each survey question with different probabilities. From a survey referenced from Statistic Canada titled "Impacts of COVID-19 on Canadians", we see that around 63% of respondents reported to be female, 37% male, and no answers were other - out of 242519 data points. Referencing from the same survey, around 16% of respondents were between 18-29, 29% were between 30-39, 22% were between 40-49, 16% were between 50-59, and another 17% were above the age of 60. Given the proportions from this existing survey, we sampled our weights for gender and age group accordingly. Referenced from an article from Global News written by Kerri Green, since she conducted a survey conducted by Global News, around 75% Canadians approve of another lock down. Therefore our question 3 and 7 in our simulated surveys are weighted greater towards the idea of a new lock down and reduced social gatherings. 
-  Referencing from an article posted by Nicole Bogard on CTV news, many of the people that were interviewed said that CERB was only able to cover daily expenses and many had to dip into savings and even RRSP therefore we concluded that we should weight questions 5 and 6 with higher probabilities of having financial instability and heavy CERB reliability. To understand how respondents feel about the reopening of schools, I referenced an article written by Katherine DeClerq stating that as of Monday September 28th, 335 schools in Ontario have reported lab-confirmed cases of the virus and parents are still ambiguous about having their kids in class rooms. Although Premier Doug Ford announced $35 million in funding for schools, the uprising of COVID-19 cases through schools is alarming and many parents would rather their kids to participate in online classes and schools should not shutdown completely to not fall behind in curriculum (DeClerq). Therefore for question 9, we weighted more towards online classes and stricter policies within in person classes. For the final question relating to the overall confidence level of respondents on how the Conservative Party is handling the 2nd wave of COVID-19, we referenced the survey conducted by Statistic Canada - "Impacts of COVID-19 on Canadians" - the question regarding the concern level of the impact of COVID-19. This question had a result that 47.9% of the answers were very concerned, while 2% of the answers were not at all concerned; therefore our simulated probabilities were shifted towards respondents being not confident enough in how the Progressive Conservative Party is handling the pandemic. 
+In order to simulate our survey with little bias and deviation, we weight each survey question with different probabilities. From a survey referenced from Statistic Canada titled "Impacts of COVID-19 on Canadians", we see that around 63% of respondents reported to be female, 37% male, and no answers were other - out of 242519 data points. Referencing from the same survey, around 16% of respondents were between 18-29, 29% were between 30-39, 22% were between 40-49, 16% were between 50-59, and another 17% were above the age of 60. Given the proportions from this existing survey, we sampled our weights for gender and age group accordingly. Referenced from an article from Global News written by Kerri Green, since she conducted a survey conducted by Global News, around 75% Canadians approve of another lock down. Therefore our question 3 and 7 in our simulated surveys are weighted greater towards the idea of a new lock down and reduced social gatherings. 
+
+Referencing from an article posted by Nicole Bogard on CTV news, many of the people that were interviewed said that CERB was only able to cover daily expenses and many had to dip into savings and even RRSP therefore we concluded that we should weight questions 5 and 6 with higher probabilities of having financial instability and heavy CERB reliability. 
+  
+To understand how respondents feel about the reopening of schools, I referenced an article written by Katherine DeClerq stating that as of Monday September 28th, 335 schools in Ontario have reported lab-confirmed cases of the virus and parents are still ambiguous about having their kids in class rooms. Although Premier Doug Ford announced $35 million in funding for schools in early October, the uprising of COVID-19 cases through schools is alarming and many parents would rather their kids to participate in online classes but at the same time schools should not shutdown completely to not fall behind in curriculum (DeClerq). Therefore for question 9, we weighted more towards online classes and stricter policies within in person classes. For the final question relating to the overall confidence level of respondents on how the Conservative Party is handling the 2nd wave of COVID-19, we referenced the survey conducted by Statistic Canada - "Impacts of COVID-19 on Canadians" - the question regarding the concern level of the impact of COVID-19. This question had a result that 47.9% of the answers were very concerned, while 2% of the answers were not at all concerned; therefore our simulated probabilities were shifted towards respondents being not confident enough in how the Progressive Conservative Party is handling the pandemic due to a high proportion of very concerned respondents in Statistic Canada's survey. 
 
 ```{r sample-data, echo=FALSE}
 set.seed(304)
@@ -79,11 +82,15 @@ survey_data <- tibble(
 survey_data
 ```
 
-# Exploratory Data Analysis/Discussion for the 
+# Exploratory Data Analysis/Discussion for opinions on financial stability of young people
 
-Are policies that relieve financial stress actually effective considering the negative effects that the pandemic has brought to the economy. When we specifically analyze the demographic of younger adults aged from 18-29, we know that this group of people is mainly comprised of students and working adults early in their career. This is a demographic of people who are generally less financially stable as we can see through Figures 1 and 4 when we asked respondents to rate their reliability on aid and financial stability from 1-10 and we can see that it is the case for this age group. We see there is a strong reliance on government aid with the left skewed distribution of answers in Figure 1 and right skewed distributions for Figure 4. In terms of business shutdowns and economic stability, these responses are valuable for the Ontario Conservative party to judge how tight lock down policies may negatively affect students' and young adults' financial situations. It is hard to balance when we factor in more responses about tighter lock downs and one's ability to self-isolate. According to Figure 2 and Figure 3, we see that the young adult demographic is generally in support of tighter lockdown restrictions and are mostly able to self-isolate while continuing with work/school. Taking this response into account, the provincial government is tasked with handling the support for further restrictions while doing it with a method to minimize job loss. While this is a general dilemma any government must deal with during the time of a pandemic, taking the data and analyzing responses from a young adult's perspective provides clearer understanding for developing a COVID-19 procedure that balances where resources are allocated for the entire province. 
+Are policies that relieve financial stress actually effective considering the negative effects that the pandemic has brought to the economy. When we specifically analyze the demographic of younger adults aged from 18-29, we know that this group of people is mainly comprised of students and working adults early in their career. 
 
-```{r young_adults}
+This is a demographic of people who are generally less financially stable as we can see through Figures 1 and 4 when we asked respondents to rate their reliability on aid and financial stability from 1-10 and we can see that it is the case for this age group. We see there is a strong reliance on government aid with the left skewed distribution of answers in Figure 1 and right skewed distributions for Figure 4. In terms of business shutdowns and economic stability, these responses are valuable for the Ontario Conservative party to judge how tight lock down policies may negatively affect students' and young adults' financial situations. 
+
+It is hard to balance when we factor in more responses about tighter lock downs and one's ability to self-isolate. According to Figure 2 and Figure 3, we see that the young adult demographic is generally in support of tighter lockdown restrictions and are mostly able to self-isolate while continuing with work/school. Taking this response into account, the provincial government is tasked with handling the support for further restrictions while doing it with a method to minimize job loss. While this is a general dilemma any government must deal with during the time of a pandemic, taking the data and analyzing responses from a young adult's perspective provides clearer understanding for developing a COVID-19 procedure that balances where resources are allocated for the entire province due to a general shift in focus of more young adults catching the virus compared to earlier where elderly population were at the highest risk.
+
+```{r young_adults , echo=FALSE}
 
 young_people <- filter(survey_data, age_grp == "18-29")
 
@@ -97,16 +104,42 @@ ggplot(young_people, aes(x=financial_stability)) + geom_bar() + labs(title = "Fi
 
 summary(young_people)
 ```
-```{r business shutdowns}
 
+# Data Analysis/Discussion for the Opinions of the Older Population
+
+As we discussed the financial instabilities of the younger generation in the previous section, we look into the opinions of older adults in terms of how they feel the about the pandemic was handled by the Conservative Party. Since the older population have savings and insurance benefits in terms of work, financial instability is still an ongoing issue, but compared to younger adults the older population more health concerns than financial worries (Leonhardt, "Millennials, Gen-Z..."). So in this section we look into how the older generation feels about how the pandemic was handled and if the limitations of social distancing is actually effective. 
+
+In figure 5. we see that the graph is left skewed and majority of opinions are favored towards little confidence levels in terms of the policies that were implemented to prevent the spread of COVID-19. This can be due to the alarming increase in COVID-19 cases since the start of September and the new highest single day record of COVID-19 cases being 797 on October 8th, 2020 (CBC News, "Ontario reports..."). Since one of the biggest causes of virus transmission is through social interactions therefore one of the policies was to reduce social gatherings from 10 to 6. Majority of the responses support the proposal of limiting social gatherings but since majority of the respondents are not satisfied with the current government's handling of the pandemic, other policies that minimize the transmission could be implemented as well such as limiting public spaces especially indoors. 
+
+```{r graphs ,echo=FALSE}
+
+old_people <- filter(survey_data, age_grp == c("30-39","40-49","50-59","60+"))
+
+ggplot(old_people, aes(x=confidence_level)) + geom_bar() + labs(title = "Figure 5. Older Adults' Confidence Level on how the Pandemic was Handled", x = "Sliding Scale (1 being not confident, 10 being very confident)")
+
+
+ggplot(old_people, aes(x=smaller_gathering_size)) + geom_bar() + labs(title = "Figure 6. Older Adults' Opinion on Smaller Gathering Sizes similar to Phase 1", x = "Sliding Scale (1 being not very effective, 10 being very effective)")
+
+
+summary(old_people)
+
+```
+# Data Analysis/Discussion for business shutdowns
+
+The context behind Figure 7 lies in our question of asking Ontario residents whether they support businesses being closed proactively or reactively in order to preemptively prevent the spread of COVID-19 or to deal with closures on a case by case basis. A significant factor involved with this has to do with how proactive business closures may affect job stability and the economy. Although this wasn't mentioned in the survey to avoid having a leading question, we are assuming this is the main consideration that respondents are concerned with when answerin. We can see that there is a large support for the proactive closure of businesses suggesting that the general Ontario population would rather take a hit on the economy and job stability in hopes of bringing COVID-19 cases down in the long term.
+
+```{r graphs, echo=FALSE}
+#plotting the graph
+ggplot(survey_data, aes(x=business_shutdowns)) + geom_bar() + labs(title = "Figure 7. General Opinions on Closing Businesses Proactively or Reactively", x = " ")
 
 ```
 
+
 # Data Analysis/Discussion for the Opinions on Reopening Schools
 
-In order to see how parents of kids feel about the reopening of schools, we isolated the age group and opinions of schools columns and filtered the data for respondents between the ages of 30 and 60. This filter was done since parents generally between the ages of 30 and 60 have their kids actively going to school and provide the most significance opinions on how the government is handling the reopening of schools, especially since the rise of COVID-19 cases in schools since schools reopened (DeClerq). From Figure 5, we can see that majority of the responses are either still having in person classes but with stricter social distancing policies, or switching classes to online completely. This allows us to conclude that parents, generally between the ages of 30 and 60, are not happy with the current state of schools and would want the Conservative Party to implement better policies that either reduces risks by better social-distancing, or completely eliminating the risk by switching to virtual classes.
+In order to see how parents of kids feel about the reopening of schools, we isolated the age group and opinions of schools columns and filtered the data for respondents between the ages of 30 and 60. This filter was done since parents generally between the ages of 30 and 60 have their kids actively going to school and provide the most significance opinions on how the government is handling the reopening of schools, especially since the rise of COVID-19 cases in schools since schools reopened (DeClerq). From Figure 8, we can see that majority of the responses are either still having in person classes but with stricter social distancing policies, or switching classes to online completely. This allows us to conclude that parents, generally between the ages of 30 and 60, are not happy with the current state of schools and would want the Conservative Party to implement better policies that either reduces risks by better social-distancing, or completely eliminating the risk by switching to virtual classes. 
 
-```{r opinion_on_schools}
+```{r opinion_on_schools, echo=FALSE}
 #Selects the two columns that we want to analyze
 parents_on_schools <- survey_data %>%
   select(age_grp, schools)
@@ -114,21 +147,22 @@ parents_on_schools <- survey_data %>%
 #Filters the general age group for most parents
 parents_on_schools %>% filter(age_grp == c("30-39", "40-49", "50-59"))
 
-ggplot(parents_on_schools, aes(x=schools))+ geom_bar()+ labs(title = "Figure 5. Parent's Opinions on Reopening of Schools", x = "Opinion on Schools")
+ggplot(parents_on_schools, aes(x=schools))+ geom_bar()+ labs(title = "Figure 8. Parent's Opinions on Reopening of Schools", x = "Opinion on Schools")
 
 ```
 
-## Results
+## Summary of Results
+
+As we look into the difference in opinions between the younger and older populations, we conclude that young adults tend to have more worries in terms of financial stability and greater dependence on government aid. Since generally older adults have more savings and employment insurance, the concern of older greater is geared towards health factors and how the government can minimize the transmission of the virus. Especially when the people within the age group of 30 and 60 have kids that are at risk due to in-person classes, the opinions of policies that deal with the reopening of schools are geared towards their kids minimizing contact with other students for example switching to online classes completely. As we take in the results for our simulated responses, we want to ultimately provide some insight into what sort of policies will be best for the Ontario government to implement. When analyzing the responses for COVID-19 policies in public schools, we are taking the results from respondents within age groups that are most likely to be parents and have a child that is affected by it. We see the most popular responses are either having stricter policies within in person classes or switching over to an online format and shutting down schools. These responses make sense as we continue to see a steep rise in cases within the second wave and the safety of staff and students in public schools has become a prevalent issue. Despite the government's best efforts to devise a plan for the 2020 school year, there is changes that needs to be made as we are experiencing a sharp increase in COVID cases. This sort of approach also ties in with the closure of businesses similar to how we handled the initial first wave in March. While the effect on the economy may be too much to handle for a shutdown similar to Phase 1, we see that there is a lot of support for non-essential business closures to stop spread. The data we collected from the survey from various topics covering schools and business closures typically point towards support for tighter lockdown and restrictions and is definitely something we recommend the Ontario Conservative Party to take into account. Overall, majority of the respondents have the ability to self-isolate and would like to have smaller gathering sizes, these opinions help the Conservative Party of Ontario to make better policies to limit the transmission of the virus and end the pandemic as quickly as possible. 
+
 
 ## Weakness and areas for future
 In terms of surveying the different demographics of Ontario residents, one area for improvement would be to figure out a solution to further categorize our respondents to use for stronger analysis. To elaborate, the main categorization we used to discuss our respondents was age group and we made further general assumptions within those age groups. For our analysis of young adults, we briefly mentioned that it included demographics such as students and working adults early in their career. Analysis for students could have been fleshed out further if we were able to exclusively pick out all the students within the sample. Further questions about demographics would have been difficult to include in the initial survey since some of them are too specific when we are surveying the population of Ontario residents to gain a general consensus for COVID-19 policies.
 With the nature of our survey, we are mainly working with qualitative variables and thus cannot analyze correlation relationships between variables for deeper analysis. Our best effort to include quantitative variables was to ask for opinions on policies and have respondents answer on a scale from 1-10. Ideally, we would want variables that can take on a wider range of continuous values to graph in a scatterplot. We can then perform a linear regression to analyze the type of relationship between the two variables to include in our discussion.
 
-
-
 # Appendix
 Code for this report could be found at:
-https://github.com/xuzi9/Opinions-on-Covid-19-Policies/blob/main/Opinions-on-Covid-19-Policies.Rmd
+https://github.com/xuzi9/Opinions-on-Covid-19-Policies
 
 ## Survey
 
@@ -145,16 +179,24 @@ knitr::include_graphics(here::here("screenshots of survey/4.PNG"))
 # References
 - Bogart, N. (2020, May 28). 'Two years of income up in the air': How the pandemic has impacted Canadians' finances. Retrieved October 08, 2020, from https://www.ctvnews.ca/health/coronavirus/two-years-of-income-up-in-the-air-how-the-pandemic-has-impacted-canadians-finances-1.4955334
 
-- Breen, K. (2020, September 18). 75% of Canadians approve of another coronavirus shutdown if second wave hits: Ipsos. Retrieved October 08,   
-  2020, from https://globalnews.ca/news/7342097/canadians-approval-second-coronavirus-lockdown/
+- Breen, K. (2020, September 18). 75% of Canadians approve of another coronavirus shutdown if second wave hits: Ipsos. Retrieved 
+  October 08, 2020, from https://globalnews.ca/news/7342097/canadians-approval-second-coronavirus-lockdown/
 
-- Bürkner P. C. (2017). brms: An R Package for Bayesian Multilevel Models using Stan. Journal of Statistical Software. 80(1), 1-28. 
-  doi.org/10.18637/jss.v080.i01
+- Bürkner P. C. (2017). brms: An R Package for Bayesian Multilevel Models using Stan. Journal of Statistical Software. 80(1), 
+  1-28.doi.org/10.18637/jss.v080.i01
+
+- CBC News. (2020, October 08). Ontario reports record-high 797 new COVID-19 cases, also breaks testing record | CBC News. Retrieved October 08, 2020, from https://www.cbc.ca/news/canada/toronto/covid-19-coronavirus-ontario-october-8-trudeau-1.5754994  
   
-- DeClerq, K. (2020, October 05). Ontario schools in COVID-19 hotspots to be given more funding as infections rise. Retrieved October 08, 2020, from https://toronto.ctvnews.ca/ontario-schools-in-covid-19-hotspots-to-be-given-more-funding-as-infections-rise-1.5132875
+- DeClerq, K. (2020, October 05). Ontario schools in COVID-19 hotspots to be given more funding as infections rise. Retrieved 
+  October 08, 2020, from https://toronto.ctvnews.ca/ontario-schools-in-covid-19-hotspots-to-be-given-more-funding-as-infections-ri
+  se-1.5132875
 
 - Joseph Larmarange (2020). labelled: Manipulating Labelled Data. R package version 2.7.0. http://larmarange.github.io/labelled/
 
+- Leonhardt, M. (2020, August 04). Millennials, Gen-Z twice as likely as their parents to say Covid-19 upended their financial 
+  security. Retrieved October 08, 2020, from 
+  https://www.cnbc.com/2020/08/04/nearly-1-in-3-millennials-gen-z-say-covid-19-negatively-impacted-financial-security.html
+  
 - Wickham et al., (2019). Welcome to the tidyverse. Journal of Open
   Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686
   
@@ -166,9 +208,10 @@ knitr::include_graphics(here::here("screenshots of survey/4.PNG"))
   computing. R Foundation for Statistical Computing, Vienna, Austria.
   URL https://www.R-project.org/.
 
-- Statistics Canada. 2020/07. Impacts of COVID-19 on Canadians-Crowdsource file. [public-use microdata file]. Ottawa, Ontario: Statistics Canada   [producer and distributor].
+- Statistics Canada. 2020/07. Impacts of COVID-19 on Canadians-Crowdsource file. [public-use microdata file]. Ottawa, Ontario: 
+  Statistics Canada   [producer and distributor].
 
-- Tierney N (2017). “visdat: Visualising Whole Data Frames.” JOSS, 2(16), 355. doi: 10.21105/joss.00355 (URL:                        
+- Tierney N (2017). “visdat: Visualising Whole Data Frames.” JOSS, 2(16), 355. doi: 10.21105/joss.00355 (URL:                    
   https://doi.org/10.21105/joss.00355), <URL: http://dx.doi.org/10.21105/joss.00355>.
 
 
