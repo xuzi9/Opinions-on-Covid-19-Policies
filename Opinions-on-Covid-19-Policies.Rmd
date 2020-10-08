@@ -20,16 +20,15 @@ Written by: Yitian Zhao and Zikun (Alex) Xu
 
 As junior statisticians at Petit Poll, we were asked by Progressive Conservative Party of Ontario to conduct a survey that helps understanding how citizens of Ontario feel about the implemented COVID-19 policies and to show how effective respondents think that the policies are at combating COVID-19. In this paper, we have the intention of guiding the Conservative Party geared towards improving policies that further improve how the government is handling this pandemic. 
 
-# Introduction
-
-As the province of Ontario is currently experiencing the COVID-19 pandemic, the Progressive Conservative Party should know how the general public's opinion on the effectiveness and satisfaction of the implemented preventative policies to combat the virus. The survey will not only provide an understanding of voter's satisfaction towards the Conservative Party which is crucial for re-election of leadership, but also help develop better policies that economically help Ontario citizens while keeping the risk of COVID at a minimum. 
-
 Using sampled data based on weighted variables that were reflected by numerous other sources such as Statistic Canada and the CES survey data (cited in Reference) in order to randomized simulated responses weighted responses based on past surveys. Details on how we weighted different responses will be explained in Survey Methodology. By using simulated responses, this paper highlights the concerns that citizens of Ontario may have on the implemented COVID-related policies, given a decrease in new COVID cases in July-August following an alarming uprising of new cases in late September/ early October. Although there were many policies implemented by the Conservative Party, the targeted attributes of new policies that we believe to be the most important in terms of financial stability, public safety, social interactions, students, and businesses in others words our economy. By studying the outcomes we will be able to understand which policies should be improved on and how the government can better deal with the pandemic. 
 
 From our study, we found that citizens could gain the most satisfaction from having tighter restrictions in terms of prevention of the spread of COVID-19, for example smaller social gatherings or stricter social distancing measures; but also better policies for relieving financial stress since business shutdowns leads to layoffs and other economical problems. For example, we concluded that majority of respondents are experiencing financial hardships and heavy reliability on CERB, especially for young-adults who have little job stability or have various debts, a solution could be to increase funding towards government aid. In this paper we also found that the reopening of schools increased the risk of contracting the virus towards students and further preventative measures to minimize this risk are strongly preferred from parents, who are generally ages between 30 and 60. 
 
-The link for this report could be found at:
-https://github.com/xuzi9/Opinions-on-Covid-19-Policies/blob/main/Opinions-on-Covid-19-Policies.Rmd
+Some weaknesses are that since this is an ongoing pandemic, predictions made now in terms general trends of age groups that are at high risk, could change in the future. The effectiveness of implemented policies are based off of online articles that talk about how the general felt and statistical data that already existed such as the survey done by Statistic Canada. One way to better our research is to target specific demographics such as young adults or parents to see what policies are preferred in terms of financial stability for young adults whom are early in their career or the reopening of schools for parents who have children attending in person classes. In the future we would want more continuous data to analyze trends that exist within schools or age groups that are at high risk and provide the Conservative Party with suggestions that help create new policies that combat with COVID-19. 
+
+# Introduction
+
+As the province of Ontario is currently experiencing the COVID-19 pandemic, the Progressive Conservative Party should know how the general public's opinion on the effectiveness and satisfaction of the implemented preventative policies to combat the virus. The survey will not only provide an understanding of voter's satisfaction towards the Conservative Party which is crucial for re-election of leadership, but also help develop better policies that economically help Ontario citizens while keeping the risk of COVID at a minimum. Given this general topic, we will explore different demographics and the opinions of each group of Ontarians. The link for this report could be found at: https://github.com/xuzi9/Opinions-on-Covid-19-Policies/blob/main/Opinions-on-Covid-19-Policies.Rmd
 
 # Survey methodology 
 
@@ -117,10 +116,10 @@ In figure 5. we see that the graph is left skewed and majority of opinions are f
 # dataset and opinions from older age groups
 old_people <- filter(survey_data, age_grp == c("30-39","40-49","50-59","60+"))
 
-ggplot(old_people, aes(x=confidence_level)) + geom_bar() + labs(title = "Figure 5. Older Adults' Confidence Level on how the Pandemic was Handled", x = "Sliding Scale (1 being not confident, 10 being very confident)")
+ggplot(old_people, aes(x=confidence_level)) + geom_bar() + labs(title = "Figure 5. Older Adults' Confidence Level", x = "Sliding Scale (1 being not confident, 10 being very confident)")
 
 
-ggplot(old_people, aes(x=smaller_gathering_size)) + geom_bar() + labs(title = "Figure 6. Older Adults' Opinion on Smaller Gathering Sizes similar to Phase 1", x = "Sliding Scale (1 being not very effective, 10 being very effective)")
+ggplot(old_people, aes(x=smaller_gathering_size)) + geom_bar() + labs(title = "Figure 6. Older Adults' Opinion on Smaller Gathering Sizes", x = "Sliding Scale (1 being not very effective, 10 being very effective)")
 
 
 summary(old_people)
@@ -159,16 +158,18 @@ As we look into the difference in opinions between the younger and older populat
 
 
 ## Weakness and areas for future
+
 In terms of surveying the different demographics of Ontario residents, one area for improvement would be to figure out a solution to further categorize our respondents to use for stronger analysis. To elaborate, the main categorization we used to discuss our respondents was age group and we made further general assumptions within those age groups. For our analysis of young adults, we briefly mentioned that it included demographics such as students and working adults early in their career. Analysis for students could have been fleshed out further if we were able to exclusively pick out all the students within the sample. Further questions about demographics would have been difficult to include in the initial survey since some of them are too specific when we are surveying the population of Ontario residents to gain a general consensus for COVID-19 policies.
 With the nature of our survey, we are mainly working with qualitative variables and thus cannot analyze correlation relationships between variables for deeper analysis. Our best effort to include quantitative variables was to ask for opinions on policies and have respondents answer on a scale from 1-10. Ideally, we would want variables that can take on a wider range of continuous values to graph in a scatterplot. We can then perform a linear regression to analyze the type of relationship between the two variables to include in our discussion.
 
 # Appendix
-Code for this report could be found at:
+
+Code for this report can be found at:
 https://github.com/xuzi9/Opinions-on-Covid-19-Policies
 
 ## Survey
 
-Add a link to the survey and screen shots of the questions.
+A link for the survey can be found at:
 https://docs.google.com/forms/d/16e9I-FcPUyoANlSYr0YyuJJc4zg_AO3sVfc4AdDo6nQ/edit?ts=5f775830&gxids=7628
 
 ```{r examplelabel, fig.cap = "Screenshots of the survey.", include = TRUE, echo = FALSE}
