@@ -16,7 +16,7 @@ library(brms)
 
 # Executive summary
 
-As junior statisticians at Petit Poll, we were asked by Progressive Conservative Party of Ontario to survey Ontario to understand how citizens of Ontario feel about the implemented COVID-19 policies and to show how effective respondents think that the policies are at combating COVID-19. In this paper, we have the intention of guiding the Conservative Party geared towards improving policies that further improve how the government is handling this pandemic. From our study, we found that citizens could gain the most satisfaction from ...
+As junior statisticians at Petit Poll, we were asked by Progressive Conservative Party of Ontario to conduct a survey that helps understanding how citizens of Ontario feel about the implemented COVID-19 policies and to show how effective respondents think that the policies are at combating COVID-19. In this paper, we have the intention of guiding the Conservative Party geared towards improving policies that further improve how the government is handling this pandemic. 
 
 # Introduction
 
@@ -24,7 +24,10 @@ As the province of Ontario is currently experiencing the COVID-19 pandemic, the 
 
 Using sampled data based on weighted variables that were reflected by numerous other sources such as Statistic Canada and the CES survey data (cited in Reference) in order to randomized simulated responses weighted responses based on past surveys. Details on how we weighted different responses will be explained in Survey Methodology. By using simulated responses, this paper highlights the concerns that citizens of Ontario may have on the implemented COVID-related policies, given a decrease in new COVID cases in July-August following an alarming uprising of new cases in late September/ early October. Although there were many policies implemented by the Conservative Party, the targeted attributes of new policies that we believe to be the most important in terms of financial stability, public safety, social interactions, students, and businesses in others words our economy. By studying the outcomes we will be able to understand which policies should be improved on and how the government can better deal with the pandemic. 
 
-Our findings suggest that ... 
+From our study, we found that citizens could gain the most satisfaction from having tighter restrictions in terms of prevention of the spread of COVID-19, for example smaller social gatherings or stricter social distancing measures; but also better policies for relieving financial stress since business shutdowns leads to layoffs and other economical problems. For example, we concluded that majority of respondents are experiencing financial hardships and heavy reliability on CERB, especially for young-adults who have little job stability or have various debts, a solution could be to increase funding towards government aid. In this paper we also found that the reopening of schools increased the risk of contracting the virus towards students and further preventative measures to minimize this risk are strongly preferred from parents, who are generally ages between 30 and 60. 
+
+The link for this report could be found at:
+https://github.com/xuzi9/Opinions-on-Covid-19-Policies/blob/main/Opinions-on-Covid-19-Policies.Rmd
 
 # Survey methodology 
 
@@ -48,13 +51,13 @@ survey_data <- tibble(
   #Question 2. Sampling age group of the respondents. We spike the probabilities since around 50% or respondents are 40 or younger.  
   age_grp = sample(x = c("18-29","30-39","40-49","50-59","60+"), size = survey_size, replace =TRUE, prob=c(0.16,0.29,0.22,0.16,0.17)),
   
-  #Question 3. Sampling on a scale of 1-10 how would the participant feel about another shutdown similar to phase 3
+  #Question 3. Sampling on a scale of 1-10 how would the participant feel about another shutdown similar to phase 1
   shut_down = sample(x = c(1:10), size = survey_size, replace=TRUE, prob=c(0.025,0.025,0.05,0.05,0.1,0.1,0.1,0.2,0.2,0.15)),
   
-  #Question 4. 
+  #Question 4. Sampling isolation abilities between yes and no
   isolate_ability = sample(x = c("yes","no"),size = survey_size, replace = TRUE, prob=c(0.93,0.07)),
   
-  #Question 5. 
+  #Question 5. Sampling the financial stability of 
   financial_stability = sample(x = c(1:10), size = survey_size, replace=TRUE, prob = c(0.25,0.3,0.2,0.05,0.05,0.05,0.025,0.025,0.025,0.025)),
   
   #Question 6. 
@@ -78,7 +81,7 @@ survey_data
 
 # Exploratory Data Analysis/Discussion for the 
 
-When we specifically analyze the demographic of younger adults aged from 18-29, we know that this group of people is mainly comprised of students and working adults early in their career. This is a demographic of people who are generally less financially stable as we can see through Figures 1 and 4 when we asked respondents to rate their reliability on aid and financial stability from 1-10 and we can see that it is the case for this age group. We see there is a strong reliance on government aid with the left skewed distribution of answers in Figure 1 and right skewed distributions for Figure 4. In terms of business shutdowns and economic stability, these responses are valuable for the Ontario Conservative party to judge how tight lockdown policies may negatively affect students' and young adults' financial situations. It is definitely a hard factor to balance when we factor in more the responses about tighter lockdowns and one's ability to self-isolate. According to Figure 2 and Figure 3, we see that the young adult demographic is generally in support of tighter lockdown restrictions and are mostly able to self-isolate while continuing with work/school. Taking this response into account, the provincial government is tasked with handling the support for further restrictions while doing it with a method to minimize job loss. While this is a general dilemma any government must deal during the time of a pandemic, taking the data and analyzing responses from a young adult demographic provides clearer understanding for developing a COVID-19 procedure to balance for the general population.
+Are policies that relieve financial stress actually effective considering the negative effects that the pandemic has brought to the economy. When we specifically analyze the demographic of younger adults aged from 18-29, we know that this group of people is mainly comprised of students and working adults early in their career. This is a demographic of people who are generally less financially stable as we can see through Figures 1 and 4 when we asked respondents to rate their reliability on aid and financial stability from 1-10 and we can see that it is the case for this age group. We see there is a strong reliance on government aid with the left skewed distribution of answers in Figure 1 and right skewed distributions for Figure 4. In terms of business shutdowns and economic stability, these responses are valuable for the Ontario Conservative party to judge how tight lock down policies may negatively affect students' and young adults' financial situations. It is hard to balance when we factor in more responses about tighter lock downs and one's ability to self-isolate. According to Figure 2 and Figure 3, we see that the young adult demographic is generally in support of tighter lockdown restrictions and are mostly able to self-isolate while continuing with work/school. Taking this response into account, the provincial government is tasked with handling the support for further restrictions while doing it with a method to minimize job loss. While this is a general dilemma any government must deal with during the time of a pandemic, taking the data and analyzing responses from a young adult's perspective provides clearer understanding for developing a COVID-19 procedure that balances where resources are allocated for the entire province. 
 
 ```{r young_adults}
 
@@ -94,9 +97,14 @@ ggplot(young_people, aes(x=financial_stability)) + geom_bar() + labs(title = "Fi
 
 summary(young_people)
 ```
+```{r business shutdowns}
+
+
+```
+
 # Data Analysis/Discussion for the Opinions on Reopening Schools
 
-In order to see how parents of kids feel about the reopening of schools, we isolated the age group and opinions of schools columns and filtered the data for respondents between the ages of 30 and 60. This filter was done since parents generally between the ages of 30 and 60 have their kids actively going to school and provide the most significance opinions on how the government is handling the reopening of schools, especially since the rise of COVID-19 cases in schools since schools reopened (DeClerq). From Figure 5, we can see that majority of the responses are either still having in person classes but with stricter social distancing policies, or switching classes to online completely. This allows us to conclude that parents, generally between the ages of 30 and 60, are not happy with the current state of schools and would want the Conservative Party to implement better policies that either reduces risks by better social-distancing, or completely eliminating the risk by switching to virtual classes. 
+In order to see how parents of kids feel about the reopening of schools, we isolated the age group and opinions of schools columns and filtered the data for respondents between the ages of 30 and 60. This filter was done since parents generally between the ages of 30 and 60 have their kids actively going to school and provide the most significance opinions on how the government is handling the reopening of schools, especially since the rise of COVID-19 cases in schools since schools reopened (DeClerq). From Figure 5, we can see that majority of the responses are either still having in person classes but with stricter social distancing policies, or switching classes to online completely. This allows us to conclude that parents, generally between the ages of 30 and 60, are not happy with the current state of schools and would want the Conservative Party to implement better policies that either reduces risks by better social-distancing, or completely eliminating the risk by switching to virtual classes.
 
 ```{r opinion_on_schools}
 #Selects the two columns that we want to analyze
@@ -113,6 +121,9 @@ ggplot(parents_on_schools, aes(x=schools))+ geom_bar()+ labs(title = "Figure 5. 
 ## Results
 
 ## Weakness and areas for future
+In terms of surveying the different demographics of Ontario residents, one area for improvement would be to figure out a solution to further categorize our respondents to use for stronger analysis. To elaborate, the main categorization we used to discuss our respondents was age group and we made further general assumptions within those age groups. For our analysis of young adults, we briefly mentioned that it included demographics such as students and working adults early in their career. Analysis for students could have been fleshed out further if we were able to exclusively pick out all the students within the sample. Further questions about demographics would have been difficult to include in the initial survey since some of them are too specific when we are surveying the population of Ontario residents to gain a general consensus for COVID-19 policies.
+With the nature of our survey, we are mainly working with qualitative variables and thus cannot analyze correlation relationships between variables for deeper analysis. Our best effort to include quantitative variables was to ask for opinions on policies and have respondents answer on a scale from 1-10. Ideally, we would want variables that can take on a wider range of continuous values to graph in a scatterplot. We can then perform a linear regression to analyze the type of relationship between the two variables to include in our discussion.
+
 
 
 # Appendix
