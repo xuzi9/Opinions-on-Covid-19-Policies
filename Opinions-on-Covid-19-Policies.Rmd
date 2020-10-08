@@ -13,6 +13,8 @@ library(tidyverse)
 library(brms)
 ```
 
+# Authors
+Written by: Yitian Zhao and Zikun (Alex) Xu
 
 # Executive summary
 
@@ -91,7 +93,7 @@ This is a demographic of people who are generally less financially stable as we 
 It is hard to balance when we factor in more responses about tighter lock downs and one's ability to self-isolate. According to Figure 2 and Figure 3, we see that the young adult demographic is generally in support of tighter lockdown restrictions and are mostly able to self-isolate while continuing with work/school. Taking this response into account, the provincial government is tasked with handling the support for further restrictions while doing it with a method to minimize job loss. While this is a general dilemma any government must deal with during the time of a pandemic, taking the data and analyzing responses from a young adult's perspective provides clearer understanding for developing a COVID-19 procedure that balances where resources are allocated for the entire province due to a general shift in focus of more young adults catching the virus compared to earlier where elderly population were at the highest risk.
 
 ```{r young_adults , echo=FALSE}
-
+# dataset and opinions of residents in a younger age group
 young_people <- filter(survey_data, age_grp == "18-29")
 
 ggplot(young_people, aes(x=CERB_reliability)) + geom_bar() + labs(title = "Figure 1. Young Adults' Reliance on Government Aid", x = "Sliding Scale (1 being not reliant on aid, 10 being very reliant on aid)")
@@ -112,7 +114,7 @@ As we discussed the financial instabilities of the younger generation in the pre
 In figure 5. we see that the graph is left skewed and majority of opinions are favored towards little confidence levels in terms of the policies that were implemented to prevent the spread of COVID-19. This can be due to the alarming increase in COVID-19 cases since the start of September and the new highest single day record of COVID-19 cases being 797 on October 8th, 2020 (CBC News, "Ontario reports..."). Since one of the biggest causes of virus transmission is through social interactions therefore one of the policies was to reduce social gatherings from 10 to 6. Majority of the responses support the proposal of limiting social gatherings but since majority of the respondents are not satisfied with the current government's handling of the pandemic, other policies that minimize the transmission could be implemented as well such as limiting public spaces especially indoors. 
 
 ```{r graphs ,echo=FALSE}
-
+# dataset and opinions from older age groups
 old_people <- filter(survey_data, age_grp == c("30-39","40-49","50-59","60+"))
 
 ggplot(old_people, aes(x=confidence_level)) + geom_bar() + labs(title = "Figure 5. Older Adults' Confidence Level on how the Pandemic was Handled", x = "Sliding Scale (1 being not confident, 10 being very confident)")
@@ -129,7 +131,7 @@ summary(old_people)
 The context behind Figure 7 lies in our question of asking Ontario residents whether they support businesses being closed proactively or reactively in order to preemptively prevent the spread of COVID-19 or to deal with closures on a case by case basis. A significant factor involved with this has to do with how proactive business closures may affect job stability and the economy. Although this wasn't mentioned in the survey to avoid having a leading question, we are assuming this is the main consideration that respondents are concerned with when answerin. We can see that there is a large support for the proactive closure of businesses suggesting that the general Ontario population would rather take a hit on the economy and job stability in hopes of bringing COVID-19 cases down in the long term.
 
 ```{r graphs, echo=FALSE}
-#plotting the graph
+#plotting the for opinions on closing businesses
 ggplot(survey_data, aes(x=business_shutdowns)) + geom_bar() + labs(title = "Figure 7. General Opinions on Closing Businesses Proactively or Reactively", x = " ")
 
 ```
