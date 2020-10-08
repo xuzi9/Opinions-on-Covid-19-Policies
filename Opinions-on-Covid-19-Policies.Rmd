@@ -20,6 +20,11 @@ As junior statisticians at Petit Poll, we were asked by Progressive Conservative
 
 # Introduction
 
+As the province of Ontario is currently experiencing the COVID-19 pandemic, the Progressive Conservative Party should know how the general public's opinion on the effectiveness and satisfaction of the implemented preventative policies to combat the virus. The survey will not only provide an understanding of voter's satisfaction towards the Conservative Party which is crucial for re-election of leadership, but also help develop better policies that economically help Ontario citizens while keeping the risk of COVID at a minimum. 
+
+Using sampled data based on weighted variables that were reflected by numerous other sources such as Statistic Canada and the CES survey data (cited in Reference) in order to randomized simulated responses weighted responses based on past surveys. Details on how we weighted different responses will be explained in Survey Methodology. By using simulated responses, this paper highlights the concerns that citizens of Ontario may have on the implemented COVID-related policies, given a decrease in new COVID cases in July-August following an alarming uprising of new cases in late September/ early October. Although there were many policies implemented by the Conservative Party, the targeted attributes of new policies that we believe to be the most important in terms of financial stability, public safety, social interactions, students, and businesses in others words our economy. By studying the outcomes we will be able to understand which policies should be improved on and how the government can better deal with the pandemic. 
+
+Our findings suggest that ... 
 
 # Survey methodology 
 
@@ -33,6 +38,7 @@ As junior statisticians at Petit Poll, we were asked by Progressive Conservative
 and more...
 
 We have a population frame of 10000 and sampled 10 different survey questions. In terms of sampling methods, we will use SRSWOR stratified for variables such as gender to restrict the different groups by strata (e.g. stratify by sex) in order to reduce bias and variability in the results. We also use simple sampling for the variables such as age group, shutdown, isolation ability, and CERB reliability since these questions could be weighted in terms of how respondents of Ontario feel about these COVID-19 policies. 
+
 # Survey questions
 Survey questions 
 1. What is your gender?
@@ -46,7 +52,10 @@ Survey questions
 9. Based on the increase of schools that have affected staff or students,  what do you feel like schools should do to minimize risk of COVID-19
 10. How confident do you feel about the current provincial administration in Ontario in handling the 2nd wave of COVID-19?
 
-# Data sampling from the Survey
+
+# Data Development
+In order to simulate our survey with little bias and deviation, we weight each survey question with different probabilities. From a survey referenced from Statistic Canada titled "Impacts of COVID-19 on Canadians", we see that around 63% of respondents reported to be female, 37% male, and no answers were other - out of 242519 data points. Referencing from the same survey, around 16% of respondents were between 18-29, 29% were between 30-39, 22% were between 40-49, 16% were between 50-59, and another 17% were above the age of 60. Given the proportions from this existing survey, we sampled our weights for gender and age group accordingly. Referenced from an article from Global News written by Kerri Green, since she conducted a survey conducted by Global News, around 75% Canadians approve of another lock down. Therefore our question 3 and 7 in our simulated surveys are weighted greater towards the idea of a new lock down and reduced social gatherings. 
+
 ```{r sample-data, echo=FALSE}
 set.seed(314)
 #Survey size of 10000 people to sample from
@@ -54,16 +63,16 @@ survey_size <- 10000
 
 survey_data <- tibble(
   #Question 1. Sampling gender with a weight of 50-50
-  gender = sample(x = c("Male","Female","Other"), size = survey_size, replace=TRUE, prob = c(0.45, 0.45, 0.1)),
+  gender = sample(x = c("Male","Female","Other"), size = survey_size, replace=TRUE, prob = c(0.63, 0.37, 0)),
   
   #Question 2. Sampling age group of the respondents. We spike the probabilities since around 50% or respondents are 40 or younger.  
-  age_grp = sample(x = c("18-29","30-39","40-49","50-59","60+"), size = survey_size, replace =TRUE, prob=c(0.25,0.25,0.2,0.15,0.15)),
+  age_grp = sample(x = c("18-29","30-39","40-49","50-59","60+"), size = survey_size, replace =TRUE, prob=c(0.16,0.29,0.22,0.16,0.17)),
   
   #Question 3. Sampling on a scale of 1-10 how would the participant feel about another shutdown similar to phase 3
-  shut_down = sample(x = c(1:10), size = survey_size, replace=TRUE),
+  shut_down = sample(x = c(1:10), size = survey_size, replace=TRUE, prob=c(0.025,0.025,0.05,0.05,0.1,0.1,0.1,0.2,0.2,0.15)),
   
   #Question 4. 
-  isolate_ability = sample(x = c("yes","no"),size = survey_size, replace = TRUE, prob=c(0.9,0.1)),
+  isolate_ability = sample(x = c("yes","no"),size = survey_size, replace = TRUE, prob=c(0.93,0.07)),
   
   #Question 5. 
   financial_stability = sample(x = c(1:10), size = survey_size, replace=TRUE, prob = c(0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1)),
@@ -72,7 +81,7 @@ survey_data <- tibble(
   CERB_reliability = sample(x = c(1:10), size = survey_size, replace=TRUE, prob = c(0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1)),
   
   #Question 7. 
-  smaller_gathering_size = sample(x = c(1:10), size = survey_size, replace=TRUE, prob = c(0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1)),
+  smaller_gathering_size = sample(x = c(1:10), size = survey_size, replace=TRUE, prob = c(0.025,0.025,0.05,0.05,0.1,0.1,0.1,0.2,0.2,0.15)),
   
   #Question 8. 
   business_shutdowns = sample(x = c("Proactively ","Reactively "),size = survey_size, replace = TRUE, prob=c(0.9,0.1)),
@@ -84,7 +93,12 @@ survey_data <- tibble(
   confidence_level = sample(x = c(1:10), size = survey_size, replace=TRUE, prob = c(0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1))
 )
 
+survey_data
 ```
+
+# Exploratory Data Analysis
+
+
 
 # Discussion 
 
@@ -95,14 +109,15 @@ survey_data <- tibble(
 
 # Appendix
 Code for this report could be found at:
-https://github.com/xuzi9/Opinions-on-Covid-19-Policies
+https://github.com/xuzi9/Opinions-on-Covid-19-Policies/blob/main/Opinions-on-Covid-19-Policies.Rmd
 
 ## Survey
 
 Add a link to the survey and screen shots of the questions.
-
+https://docs.google.com/forms/d/16e9I-FcPUyoANlSYr0YyuJJc4zg_AO3sVfc4AdDo6nQ/edit?ts=5f775830&gxids=7628
 
 # References
+- Breen, K. (2020, September 18). 75% of Canadians approve of another coronavirus shutdown if second wave hits: Ipsos. Retrieved October 08, 2020, from https://globalnews.ca/news/7342097/canadians-approval-second-coronavirus-lockdown/
 
 - Wickham et al., (2019). Welcome to the tidyverse. Journal of Open
   Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686
@@ -112,3 +127,5 @@ Add a link to the survey and screen shots of the questions.
 - R Core Team (2020). R: A language and environment for statistical
   computing. R Foundation for Statistical Computing, Vienna, Austria.
   URL https://www.R-project.org/.
+
+-Statistics Canada. 2020/07. Impacts of COVID-19 on Canadians-Crowdsource file. [public-use microdata file]. Ottawa, Ontario: Statistics Canada [producer and distributor].
